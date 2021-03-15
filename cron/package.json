@@ -1,0 +1,50 @@
+{
+  "name": "cron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=local npx nodemon -e ts,json --watch .env --watch package.json --watch src --watch config -x \"npx ts-node src/boot.ts\"",
+    "start": "node dist/boot.js",
+    "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
+    "build": "npx tsc",
+    "cover": "npx nyc npm test",
+    "lint": "npx eslint src/**/*.ts --cache --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohism-framework/cronjob-tpl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohism-framework/cronjob-tpl/issues"
+  },
+  "homepage": "https://github.com/mohism-framework/cronjob-tpl#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint & npm test"
+    }
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "chai": "^4.3.0",
+    "eslint": "^7.20.0",
+    "husky": "^5.1.1",
+    "mocha": "^8.3.0",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "@mohism/core": "^1.1.24",
+    "nodejieba": "^2.5.1",
+    "puppeteer": "^8.0.0"
+  }
+}

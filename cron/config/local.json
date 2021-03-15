@@ -1,0 +1,22 @@
+{
+  "mongo": {
+    "default": {
+      "username": "root",
+      "password": "459efee5be1f474fd1c60c147ebf6195",
+      "authSource": "admin",
+      "dbname": "test",
+      "host": "127.0.0.1",
+      "port": 27017,
+      "slave": [],
+      "replicaSet": ""
+    }
+  },
+  "redis": {
+    "default": {
+      "host": "127.0.0.1",
+      "password": "fa65c4f44b387ff9d9323fbfc214c240",
+      "port": 6379,
+      "db": 0
+    }
+  }
+}

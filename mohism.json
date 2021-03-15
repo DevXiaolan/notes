@@ -1,0 +1,14 @@
+{
+  "children": [
+    {
+      "appId": 1000,
+      "name": "api"
+    },
+    {
+      "appId": 1001,
+      "name": "cron"
+    }
+  ],
+  "name": "y",
+  "type": "composer"
+}

@@ -1,0 +1,42 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "NODE_ENV=local npx nodemon -e ts,json --watch .env --watch package.json --watch src --watch config -x \"npx ts-node src/boot.ts\"",
+    "build": "npx tsc",
+    "start": "node dist/boot.js",
+    "lint": "npx eslint src/**/*.ts --cache --fix",
+    "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
+    "cover": "npx nyc npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.2.4",
+    "@types/ioredis": "^4.0.18",
+    "@types/mocha": "^5.2.7",
+    "@types/mongoose": "^5.7.11",
+    "@types/node": "^12.7.12",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.5.1",
+    "husky": "^3.1.0",
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.3",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "@mohism/core": "^1.1.16",
+    "@mohism/utils": "^1.1.9",
+    "nodejieba": "^2.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint & npm test"
+    }
+  }
+}
