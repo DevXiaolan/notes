@@ -30,7 +30,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@mohism/core": "^1.1.16",
+    "@mohism/core": "^1.1.29",
     "@mohism/utils": "^1.1.9",
     "nodejieba": "^2.5.1"
   },

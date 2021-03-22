@@ -4,7 +4,7 @@ import { TRecordStatus } from '../common/type';
 export default Model('record', {
   url: { type: String, default: '' },
   keywords: [
-    { type: String }
+    { word: String, score: Number }
   ],
   title: { type: String, default: '' },
   content: { type: String, default: '' },
