@@ -6,15 +6,21 @@ import { Logger } from '@mohism/utils';
 const logger = Logger();
 
 export default {
-  name: 'ten-seconds',
+  name: 'craw every 10 seconds',
   expr: '*/10 * * * * *',
   immediate: false,
   func: async () => {
     const record = await useModel<IRecord>('record').findOne({ status: TRecordStatus.CREARE });
+    // const record = await useModel<IRecord>('record').findOne({ url: 'https://lanhao.name/blog/331' });
     if (record !== null) {
       const { url } = record as IRecord;
       const crawler = new Crawler(url);
-      await crawler.fetch();
+      try{
+        await crawler.fetch();
+      }catch(e){
+        logger.err(`ERR: ${e.message}`);
+      }
+      logger.info('Success! 🔥')
     } else {
       logger.info('Record not found.')
     }

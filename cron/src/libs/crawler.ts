@@ -5,11 +5,23 @@ import { IRecord, TRecordStatus } from "../common/type";
 import puppeteer from 'puppeteer';
 import { useModel } from "@mohism/core";
 import jieba from "./jieba";
+import { Dict } from '@mohism/utils';
+
+const SPEC_SELECTOR: Dict<string> = {
+  'jianshu.com': 'article'
+};
 
 export default class Crawler {
   url: string;
   constructor(url: string) {
     this.url = url;
+  }
+
+  getSelector(): string {
+    const key = Object.keys(SPEC_SELECTOR).find(key => {
+      return this.url.includes(key);
+    })
+    return key ? SPEC_SELECTOR[key] : 'body';
   }
 
   async fetch(): Promise<IRecord> {
@@ -19,9 +31,10 @@ export default class Crawler {
     await page.waitForTimeout(1000);
     const title = await page.title();
     const ctx = await page.$eval('body', el => el.innerHTML);
-    const text = await page.$eval('body', el => el.textContent as string);
     
-    const keywords = jieba(title,text);
+    const text = await page.$eval(this.getSelector(), el => el.innerHTML as string);
+
+    const keywords = jieba(title, text);
     await useModel('record').updateOne({ url: this.url }, {
       $set: {
         content: ctx,

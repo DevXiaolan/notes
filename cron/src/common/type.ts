@@ -1,9 +1,14 @@
 import { Document } from 'mongoose';
 
+export interface IKeyword {
+  word: string;
+  score: number;
+}
+
 export interface IRecord extends Document {
   url: string;
   status: TRecordStatus;
-  keywords?: string[];
+  keywords?: IKeyword[];
   title?: string;
   content?: string;
   prevContent?: string;
