@@ -8,10 +8,11 @@ const logger = Logger();
 export default {
   name: 'craw every 10 seconds',
   expr: '*/10 * * * * *',
-  immediate: false,
+  immediate: true,
   func: async () => {
     const record = await useModel<IRecord>('record').findOne({ status: TRecordStatus.CREARE });
-    // const record = await useModel<IRecord>('record').findOne({ url: 'https://lanhao.name/blog/331' });
+    // const record = await useModel<IRecord>('record').findOne({ url: 'https://juejin.cn/post/6942607113118023710' });
+    
     if (record !== null) {
       const { url } = record as IRecord;
       const crawler = new Crawler(url);

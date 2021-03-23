@@ -8,7 +8,9 @@ import jieba from "./jieba";
 import { Dict } from '@mohism/utils';
 
 const SPEC_SELECTOR: Dict<string> = {
-  'jianshu.com': 'article'
+  'jianshu.com': 'article',
+  'juejin.im': '.article-content',
+  'juejin.cn': '.article-content',
 };
 
 export default class Crawler {
@@ -31,10 +33,11 @@ export default class Crawler {
     await page.waitForTimeout(1000);
     const title = await page.title();
     const ctx = await page.$eval('body', el => el.innerHTML);
-    
-    const text = await page.$eval(this.getSelector(), el => el.innerHTML as string);
 
-    const keywords = jieba(title, text);
+    const text = await page.$eval(this.getSelector(), el => el.innerHTML as string);
+    const mKeyword = await page.$eval('head>meta[name=keywords]', el => el.getAttribute('content'));
+
+    const keywords = jieba(title, text, { keyword: mKeyword });
     await useModel('record').updateOne({ url: this.url }, {
       $set: {
         content: ctx,

@@ -7,10 +7,14 @@ export interface IKeyword {
   score: number;
 }
 
-export default (title: string, content: string): Array<IKeyword> => {
+export default (title: string, content: string, meta: { keyword?: string | null } = {}): Array<IKeyword> => {
+
   const M: Dict<number> = {};
+
+  // 第一步，计算内容基本分
   extract(
     content.replace(/\n/g, '')
+      .replace(/(<style>.*?<\/style>)/ig, '')
       .replace(/(<pre>.*?<\/pre>)/ig, '')
       .replace(/(<code>.*?<\/code>)/ig, '')
       .replace(/<[^>]*>/g, ' '), 20).forEach(record => {
@@ -23,6 +27,7 @@ export default (title: string, content: string): Array<IKeyword> => {
         M[w] += record.weight * (BLACKS[w] ?? 1);
       });
 
+  // 第二部， 计算页面 title 加成
   extract(title, 3).forEach(record => {
     const w = record.word.toLowerCase();
     if (!M[w]) {
@@ -31,6 +36,17 @@ export default (title: string, content: string): Array<IKeyword> => {
     }
     M[w] += record.weight * 10;
   });
+  // 第三步，计算 meta.keywords 加成
+  if (meta.keyword) {
+    extract(meta.keyword,3).forEach(record =>{
+      const w = record.word.toLowerCase();
+      if (!M[w]) {
+        return;
+      }
+      M[w] = M[w] * 2;
+    })
+  }
+  
   return Object
     .entries(M)
     .sort((a, b) => b[1] - a[1])
