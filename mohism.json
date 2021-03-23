@@ -7,6 +7,10 @@
     {
       "appId": 1001,
       "name": "cron"
+    },
+    {
+      "appId": 1002,
+      "name": "web"
     }
   ],
   "name": "y",
