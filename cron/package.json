@@ -43,8 +43,10 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
-    "@mohism/core": "^1.1.29",
+    "@mohism/core": "^1.1.32",
+    "i": "^0.3.6",
     "nodejieba": "^2.5.1",
+    "npm": "^7.7.4",
     "puppeteer": "^8.0.0"
   }
 }

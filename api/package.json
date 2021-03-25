@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "node dist/boot.js",
     "lint": "npx eslint src/**/*.ts --cache --fix",
-    "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
+    "test": "NODE_ENV=test LOG_LEVEL=warn npx mocha --exit --recursive -r ts-node/register test/**/*.spec.ts",
     "cover": "npx nyc npm test"
   },
   "author": "",
@@ -30,7 +30,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@mohism/core": "^1.1.29",
+    "@mohism/core": "^1.1.32",
     "@mohism/utils": "^1.1.9",
     "nodejieba": "^2.5.1"
   },
