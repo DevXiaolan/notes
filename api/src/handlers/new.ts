@@ -12,4 +12,4 @@ export default async (url: string) => {
     { upsert: true },
   );
   return;
-}
+};
