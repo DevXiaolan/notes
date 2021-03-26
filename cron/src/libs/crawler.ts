@@ -35,7 +35,7 @@ export default class Crawler {
     const ctx = await page.$eval('body', el => el.innerHTML);
 
     const text = await page.$eval(this.getSelector(), el => el.innerHTML as string);
-    const mKeyword = await page.$eval('head>meta[name=keywords]', el => el.getAttribute('content'));
+    const mKeyword = await page.$eval('head>meta[name=keywords]', el => el?.getAttribute('content')).catch(() => '');
 
     const keywords = jieba(title, text, { keyword: mKeyword });
     await useModel('record').updateOne({ url: this.url }, {

@@ -36,6 +36,7 @@ export default (title: string, content: string, meta: { keyword?: string | null 
     }
     M[w] += record.weight * 10;
   });
+  
   // 第三步，计算 meta.keywords 加成
   if (meta.keyword) {
     extract(meta.keyword,3).forEach(record =>{

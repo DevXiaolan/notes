@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",
+    "@types/ioredis": "^4.22.1",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.31",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
@@ -44,7 +45,6 @@
   },
   "dependencies": {
     "@mohism/core": "^1.1.32",
-    "i": "^0.3.6",
     "nodejieba": "^2.5.1",
     "npm": "^7.7.4",
     "puppeteer": "^8.0.0"

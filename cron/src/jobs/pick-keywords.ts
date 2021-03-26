@@ -1,7 +1,7 @@
 import { ICronexpr, useModel, useRedis } from '@mohism/core';
 import { Logger, Dict } from '@mohism/utils';
 import { IRecord, TRecordStatus } from '../common/type';
-
+import { Redis } from 'ioredis';
 const logger = Logger();
 
 /**
@@ -41,7 +41,7 @@ export default {
     );
     Object.entries(result)
       .forEach(async ([key, values]) => {
-        await redis.set(`se:${key}`, JSON.stringify(values));
+        await redis.set(`se:${key}`, JSON.stringify(values), 'EX', 30);
       });
     logger.info('索引的重建完毕')
   }

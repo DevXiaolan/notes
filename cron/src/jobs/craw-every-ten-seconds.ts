@@ -11,7 +11,7 @@ export default {
   immediate: true,
   func: async () => {
     const record = await useModel<IRecord>('record').findOne({ status: TRecordStatus.CREARE });
-    // const record = await useModel<IRecord>('record').findOne({ url: 'https://juejin.cn/post/6942607113118023710' });
+    // const record = await useModel<IRecord>('record').findOne({ url: 'https://lanhao.name/blog/291' });
     
     if (record !== null) {
       const { url } = record as IRecord;
