@@ -11,6 +11,10 @@
     {
       "appId": 1002,
       "name": "web"
+    },
+    {
+      "appId": 1003,
+      "name": "admin"
     }
   ],
   "name": "y",

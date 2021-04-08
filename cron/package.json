@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=local npx nodemon -e ts,json --watch .env --watch package.json --watch src --watch config -x \"npx ts-node src/boot.ts\"",
+    "dev": "NODE_ENV=local npx nodemon -e ts,json --watch .env --watch package.json --watch src --watch config --watch black_words.json -x \"npx ts-node src/boot.ts\"",
     "start": "node dist/boot.js",
     "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
     "build": "npx tsc",
