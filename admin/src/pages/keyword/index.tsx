@@ -23,6 +23,9 @@ export default () => {
   useEffect(() => {
     getKeyword()
       .then((data) => {
+        data.sort(() => {
+          return Math.random() - 0.5;
+        });
         setKeyword(data);
       })
       .catch((e) => {
