@@ -8,8 +8,22 @@ export default defineConfig({
   routes: [
     {
       path: '/',
-      wrappers: ['@/layouts'],
-      component: '@/pages/index',
+      component: '@/layouts',
+      routes: [
+        {
+          path: '/',
+          exact: true,
+          component: './index',
+        },
+        {
+          path: '/keyword',
+          exact: true,
+          component: './keyword',
+        },
+        {
+          component: './not-found',
+        },
+      ],
     },
   ],
 });

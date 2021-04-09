@@ -3,15 +3,18 @@ import {
   BasicLayoutProps as ProLayoutComponentsProps,
   MenuDataItem,
 } from '@ant-design/pro-layout';
-import { ReadOutlined, FieldNumberOutlined, FundProjectionScreenOutlined } from '@ant-design/icons';
+import {
+  ReadOutlined,
+  FieldNumberOutlined,
+  FundProjectionScreenOutlined,
+} from '@ant-design/icons';
 import { Spin } from 'antd';
 import React from 'react';
 import { Helmet, Link } from 'umi';
 
 import styles from './styles.less';
 
-export interface BasicLayoutProps
-  extends ProLayoutComponentsProps {
+export interface BasicLayoutProps extends ProLayoutComponentsProps {
   sideBar: MenuDataItem[];
   breadcrumbNameMap: {
     [path: string]: MenuDataItem;
@@ -38,8 +41,7 @@ const menus: MenuDataItem[] = [
   },
 ];
 
-const BasicLayout: React.FC<BasicLayoutProps> = props => {
-
+const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const { children } = props;
 
   return menus.length ? (
@@ -48,17 +50,15 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       menuHeaderRender={false}
       menuItemRender={(menuItemProps) => {
         return (
-          <Link
-            className={styles.menu}
-            to={menuItemProps.path as string}
-          >
-            {menuItemProps.icon}<span>{menuItemProps.name}</span>
+          <Link className={styles.menu} to={menuItemProps.path as string}>
+            {menuItemProps.icon}
+            <span>{menuItemProps.name}</span>
           </Link>
         );
       }}
       menuDataRender={() => {
         console.log('Final Menu', menus);
-        return menus
+        return menus;
       }}
       navTheme="light"
       layout="top"
@@ -69,8 +69,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       </Helmet>
       {children}
     </ProLayoutComponents>
-  ) : <Spin />;
+  ) : (
+    <Spin />
+  );
 };
-
 
 export default BasicLayout;

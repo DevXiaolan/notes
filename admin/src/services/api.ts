@@ -1,7 +1,10 @@
 import request from '@/utils/request';
 
 // example
-export const getUser = async (uid: number) => {
-  const { data } = await request(`/user/${uid}`, { method: 'GET' });
-  return data;
+export const getKeyword = async () => {
+  const { code, data, message } = await request('/api/keyword');
+  if (code === 0) {
+    return data;
+  }
+  throw new Error(message);
 };
