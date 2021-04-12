@@ -4,10 +4,10 @@ export const method = HTTP_METHODS.POST;
 
 export default async (word: string, score: number = 0) => {
   await useModel('black').updateOne({
-    word,
+    word: decodeURIComponent(word),
   }, {
-    word,
-    score,
+    word: decodeURIComponent(word),
+    score: +score,
   }, {
     upsert: true,
   });
