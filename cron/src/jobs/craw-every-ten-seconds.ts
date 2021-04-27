@@ -10,8 +10,8 @@ export default {
   expr: '*/10 * * * * *',
   immediate: true,
   func: async () => {
-    // const record = await useModel<IRecord>('record').findOne({ status: TRecordStatus.CREARE });
-    const record = await useModel<IRecord>('record').findOne({ url: 'https://lanhao.name/blog/298' });
+    const record = await useModel<IRecord>('record').findOne({ status: TRecordStatus.CREARE });
+    // const record = await useModel<IRecord>('record').findOne({ url: 'https://lanhao.name/blog/298' });
     
     if (record !== null) {
       const { url } = record as IRecord;
