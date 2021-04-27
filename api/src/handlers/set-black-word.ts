@@ -1,6 +1,7 @@
-import { HTTP_METHODS, IMiddleware, useModel } from "@mohism/core";
-import auth from '../middlewares/auth';
+import { HTTP_METHODS, IMiddleware, useModel } from '@mohism/core';
+
 import { TRecordStatus } from '../common/type';
+import auth from '../middlewares/auth';
 
 export const method = HTTP_METHODS.POST;
 

@@ -21,6 +21,11 @@ export default defineConfig({
           component: './keyword',
         },
         {
+          path: '/black',
+          exact: true,
+          component: './black',
+        },
+        {
           component: './not-found',
         },
       ],

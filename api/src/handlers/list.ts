@@ -1,5 +1,4 @@
-import { useModel } from '@mohism/core';
-import { useRedis } from '@mohism/core/dist/engine/service/hooks';
+import { useModel, useRedis } from '@mohism/core';
 
 const PAGE_SIZE = 10;
 
