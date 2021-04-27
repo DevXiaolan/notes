@@ -1,13 +1,20 @@
 import { extract, load } from 'nodejieba';
 import { Dict } from '@mohism/utils';
+import { useModel } from '@mohism/core';
+import { IBlack } from '../common/type';
 
-const BLACKS = require(`${__dirname}/../../black_words.json`);
 export interface IKeyword {
   word: string;
   score: number;
 }
 
-export default (title: string, content: string, meta: { keyword?: string | null } = {}): Array<IKeyword> => {
+export default async (title: string, content: string, meta: { keyword?: string | null } = {}): Promise<Array<IKeyword>> => {
+
+  const BLACKS = (await useModel('black').find({}))?.reduce((state, cur) => {
+    const { word, score } = cur as unknown as IBlack;
+    state[word] = score;
+    return state;
+  }, {} as Dict<number>)
 
   const M: Dict<number> = {};
 
@@ -36,10 +43,10 @@ export default (title: string, content: string, meta: { keyword?: string | null 
     }
     M[w] += record.weight * 10;
   });
-  
+
   // 第三步，计算 meta.keywords 加成
   if (meta.keyword) {
-    extract(meta.keyword,3).forEach(record =>{
+    extract(meta.keyword, 3).forEach(record => {
       const w = record.word.toLowerCase();
       if (!M[w]) {
         return;
@@ -47,7 +54,6 @@ export default (title: string, content: string, meta: { keyword?: string | null 
       M[w] = M[w] * 2;
     })
   }
-  
   return Object
     .entries(M)
     .sort((a, b) => b[1] - a[1])

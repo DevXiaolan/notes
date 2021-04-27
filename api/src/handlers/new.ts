@@ -1,8 +1,9 @@
-import { HTTP_METHODS, useModel } from '@mohism/core';
-import { IRecord, TRecordStatus } from '../common/type';
+import auth from '../middlewares/auth';
+import { HTTP_METHODS, IMiddleware, useModel } from '@mohism/core';
+import { TRecordStatus } from '../common/type';
 
 export const method = HTTP_METHODS.POST;
-
+export const middlewares: IMiddleware[] = [auth];
 // 收录
 export default async (url: string) => {
   // todo 去重检查

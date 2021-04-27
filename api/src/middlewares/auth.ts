@@ -1,5 +1,6 @@
-import { IMiddleware, HttpPick, HTTP_PARAM_LOCATION } from '@mohism/core';
+import { IMiddleware, HttpPick, HTTP_PARAM_LOCATION, useRedis } from '@mohism/core';
 import { Logger, Dict } from '@mohism/utils';
+import { ErrSecretNotMatch } from '../errors/index';
 
 const logger = Logger();
 
@@ -18,7 +19,12 @@ class Auth implements IMiddleware {
 
   async run(params: Dict<any>) {
     logger.info('auth');
-    logger.info(params);
+    const redis = useRedis('default');
+    const secret = await redis.get('secret');
+
+    if (secret !== params.name) {
+      throw ErrSecretNotMatch;
+    }
   }
 }
 

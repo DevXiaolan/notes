@@ -2,13 +2,11 @@
 import { describe, it } from 'mocha';
 
 import Keyword from '../src/handlers/keyword';
-import { assert, expect } from 'chai';
+import { expect } from 'chai';
 import { TestApplication } from '@mohism/core';
 
 
-describe('jieba', () => {
-
-  
+describe('jieba', () => {  
   it('test', async () => {
     let app = new TestApplication(`${__dirname}/../src/`);
     await app.bootstrap();
