@@ -16,6 +16,11 @@ export default defineConfig({
           component: './index',
         },
         {
+          path: '/record',
+          exact: true,
+          component: './record',
+        },
+        {
           path: '/keyword',
           exact: true,
           component: './keyword',

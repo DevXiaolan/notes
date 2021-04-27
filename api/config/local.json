@@ -9,8 +9,8 @@
   },
   "mongo": {
     "default": {
-      "username": "root",
-      "password": "459efee5be1f474fd1c60c147ebf6195",
+      "username": "",
+      "password": "",
       "authSource": "admin",
       "dbname": "test",
       "host": "127.0.0.1",

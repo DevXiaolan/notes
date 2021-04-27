@@ -1,6 +1,6 @@
 import { useModel, useRedis } from '@mohism/core';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 1000;
 
 // 获取了列表
 export default async (keyword = '', page = 1) => {
@@ -11,6 +11,8 @@ export default async (keyword = '', page = 1) => {
   }
   const rows = await useModel('record').find({}, {
     title: 1,
+    keywords: 1,
+    updatedAt: 1,
   }, {
     skip: PAGE_SIZE * (page - 1),
     limit: PAGE_SIZE,
