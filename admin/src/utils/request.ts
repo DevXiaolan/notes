@@ -26,8 +26,6 @@ const request = extend({
  */
 
 request.interceptors.response.use(async (response) => {
-  console.log(response);
-
   return response;
 });
 

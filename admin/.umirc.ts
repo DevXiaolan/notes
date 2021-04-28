@@ -31,6 +31,11 @@ export default defineConfig({
           component: './black',
         },
         {
+          path: '/token',
+          exact: true,
+          component: './token',
+        },
+        {
           component: './not-found',
         },
       ],

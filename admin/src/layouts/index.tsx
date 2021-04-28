@@ -7,6 +7,7 @@ import {
   ReadOutlined,
   FieldNumberOutlined,
   FundProjectionScreenOutlined,
+  ContactsOutlined,
 } from '@ant-design/icons';
 import { Spin } from 'antd';
 import React from 'react';
@@ -39,6 +40,11 @@ const menus: MenuDataItem[] = [
     name: '禁用词',
     icon: <FundProjectionScreenOutlined />,
   },
+  {
+    path: '/token',
+    name: 'Token管理',
+    icon: <ContactsOutlined />,
+  },
 ];
 
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
@@ -57,7 +63,6 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
         );
       }}
       menuDataRender={() => {
-        console.log('Final Menu', menus);
         return menus;
       }}
       navTheme="light"

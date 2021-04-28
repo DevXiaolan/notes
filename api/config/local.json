@@ -22,7 +22,7 @@
   "redis": {
     "default": {
       "host": "127.0.0.1",
-      "password": "fa65c4f44b387ff9d9323fbfc214c240",
+      "password": "",
       "port": 6379,
       "db": 0
     }
