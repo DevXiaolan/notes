@@ -9,8 +9,11 @@ export default async (keyword = '') => {
   }
   const rows = await useModel('record').find({}, {
     title: 1,
-    keywords: 1,
+    url: 1,
+    'keywords.word': 1,
+    // 'keywords._id': 0,
     updatedAt: 1,
+    _id: 0,
   }, {
     sort: { createdAt: -1 },
   });

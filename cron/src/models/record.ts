@@ -8,6 +8,8 @@ export default Model('record', {
   ],
   title: { type: String, default: '' },
   content: { type: String, default: '' },
+  text: { type: String, default: '' },
+  pageKeywords: { type: String, default: '' },
   prevContent: { type: String, default: '' },
   status: { type: TRecordStatus, default: TRecordStatus.CREARE }
 });

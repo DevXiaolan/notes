@@ -12,13 +12,12 @@ export default {
   func: async () => {
     const record = await useModel<IRecord>('record').findOne({ status: TRecordStatus.CREARE });
     // const record = await useModel<IRecord>('record').findOne({ url: 'https://lanhao.name/blog/298' });
-    
+
     if (record !== null) {
-      const { url } = record as IRecord;
-      const crawler = new Crawler(url);
-      try{
+      const crawler = new Crawler(record);
+      try {
         await crawler.fetch();
-      }catch(e){
+      } catch (e) {
         logger.err(`ERR: ${e.message}`);
       }
       logger.info('Success! 🔥')

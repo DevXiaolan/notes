@@ -11,6 +11,8 @@ export interface IRecord extends Document {
   keywords?: IKeyword[];
   title?: string;
   content?: string;
+  text?: string;
+  pageKeywords?:string;
   prevContent?: string;
 }
 

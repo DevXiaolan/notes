@@ -20,7 +20,7 @@ export default () => {
       title: '标题',
       dataIndex: 'title',
       render: (title: string, record: IRecord) => (
-        <a href={record.url}>{title}</a>
+        <a href={record.url} target="_blank">{title}</a>
       )
     },
     {
