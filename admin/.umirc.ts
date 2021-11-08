@@ -4,6 +4,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  mfsu: {},
   esbuild: {},
   routes: [
     {
