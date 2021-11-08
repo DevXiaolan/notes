@@ -4,13 +4,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  proxy: {
-    '/api/': {
-      target: 'http://localhost:3002/',
-      pathRewrite: { '^/api' : '' },
-      changeOrigin: true,
-    },
-  },
+  mfsu: {},
   esbuild: {},
   routes: [
     {

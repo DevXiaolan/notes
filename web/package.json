@@ -28,7 +28,7 @@
     "npm": "^7.6.3",
     "react-wordcloud": "^1.2.7",
     "rekv": "^1.2.2",
-    "umi": "^3.3.3"
+    "umi": "^3.5.20"
   },
   "devDependencies": {
     "@types/react": "^16.9.0",
